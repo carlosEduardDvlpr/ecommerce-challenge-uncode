@@ -1,36 +1,16 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# UNCommerce - desafio técnico uncode
 
-## Getting Started
+Essa documentação tem como objetivo mostrar a minha experiencia com o desenvolvimento do projeto, decisões técnicas, etc
 
-First, run the development server:
+## 1 - Pontapé Inicial
+### API FAKE - Produtos
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Iniciei o desenvolvimento pela API, desenvolvendo o fluxo de busca do route handler
+decidi usar queryparams para filtragem dos produtos (por ID, nome e categoria), já visando as situações onde posso precisar desses filtros
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+estrutura:
+> app/api/mock/products
+              > route.ts    ** route handle com unico endepoint GET, responsavel por recuperar o valor do filtros
+              > products.ts    ** constante contendo os dados estáticos de 12 produtos
+              /utils
+              > product-filters.ts    ** funções de filtro na constante products
