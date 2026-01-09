@@ -13,3 +13,7 @@ export function filterProductByName(name: string) {
 export function filterProductById(id: number) {
   return products.find((product) => product.id === id) || [];
 }
+
+export function filterProductsOffers() {
+  return products.filter((product) => product.offer === true);
+}
