@@ -1,7 +1,11 @@
-export default function HomePage() {
+import Banner from './_components/banner';
+import OfferProductsViewModel from './_components/offers';
+
+export default async function HomePage() {
   return (
     <main>
-      <h1>HomePage</h1>
+      <Banner />
+      <OfferProductsViewModel />
     </main>
   );
 }
