@@ -5,13 +5,14 @@ import { Card, CardContent } from '@/components/ui/card';
 import { formatNumberBrl } from '@/utils/format-number-brl';
 import { HeartIcon, ShoppingCartIcon } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export function CardProductView({ product }: { product: Product }) {
   return (
-    <Card key={product.id} className="overflow-hidden relative p-0 animate-in">
+    <Card key={product.id} className="overflow-hidden relative p-0">
       <CardContent className="p-2">
         {product.offer && (
-          <Badge className="absolute top-2 left-2">Oferta</Badge>
+          <Badge className="absolute top-4 left-4">Oferta</Badge>
         )}
 
         <div className="absolute top-2 right-2">
@@ -33,25 +34,29 @@ export function CardProductView({ product }: { product: Product }) {
         />
 
         <p className="text-sm font-medium mt-1">{product.name}</p>
-        <p className="text-xs font-medium mt-1">{product.shortDescription}</p>
+        <p className="text-xs font-medium mt-1">
+          {product.shortDescription.slice(0, 22).concat('...')}
+        </p>
 
-        <div className="py-2">
+        <div className="my-2">
           {product.offer ? (
-            <p className="text-sm  text-gray-600/80 line-through">
+            <p className="text-sm text-gray-600/80 h-5 line-through">
               {formatNumberBrl(product.originalPrice)}
             </p>
           ) : (
-            <p className="text-transparent">.</p>
+            <p className="text-transparent h-5"></p>
           )}
 
-          <p className="text-xl  font-medium text-primary">
+          <p className="text-xl font-medium text-primary">
             {formatNumberBrl(product.price)}
           </p>
         </div>
 
-        <Button className="w-full bg-primary border-2 border-primary hover:bg-orange-700">
-          Comprar
-        </Button>
+        <Link href={`/product/${product.id}`}>
+          <Button className="w-full bg-primary border-2 border-primary hover:bg-orange-700">
+            Comprar
+          </Button>
+        </Link>
       </CardContent>
     </Card>
   );
