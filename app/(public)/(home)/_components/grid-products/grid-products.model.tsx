@@ -12,17 +12,26 @@ export function useGridProductsModel() {
   ] as const;
 
   const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(false);
+
   const [selectedCategory, setSelectedCategory] =
     useState<(typeof filters)[number]>('todos');
 
   const getProducts = async () => {
-    const response = await fetch(
-      'http://localhost:3000/api/mock/products?category=' + selectedCategory,
-    );
-    const products = (await response.json()) as Product[];
-    console.log(products);
+    try {
+      setLoading(true);
+      setProducts([]);
 
-    setProducts(products);
+      const response = await fetch(
+        'http://localhost:3000/api/mock/products?category=' + selectedCategory,
+      );
+      const products = (await response.json()) as Product[];
+      setProducts(products);
+    } catch (error) {
+      setProducts([]);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -34,5 +43,6 @@ export function useGridProductsModel() {
     filters,
     setSelectedCategory,
     selectedCategory,
+    loading,
   };
 }

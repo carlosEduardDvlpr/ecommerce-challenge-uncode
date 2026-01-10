@@ -13,4 +13,5 @@ export interface GridProductsProps {
   setSelectedCategory: React.Dispatch<
     React.SetStateAction<GridProductsProps['filters'][number]>
   >;
+  loading: boolean;
 }
