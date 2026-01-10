@@ -152,7 +152,7 @@ export const products = [
   },
   {
     id: 12,
-    name: 'Base Refrigerada para Notebook',
+    name: 'Base para Notebook',
     originalPrice: 220,
     price: 190,
     offer: true,
