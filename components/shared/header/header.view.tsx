@@ -1,10 +1,13 @@
-
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Heart, Search, ShoppingCart, User } from 'lucide-react';
 import { HeaderProps } from './header.type';
 
-export function HeaderView({ handleSearch, setSearch }: HeaderProps) {
+export function HeaderView({
+  handleSearch,
+  setSearchWord,
+  searchWord,
+}: HeaderProps) {
   return (
     <header className="p-pattern flex gap-12 bg-primary text-white h-17.5 w-full justify-between items-center">
       {/* Logo */}
@@ -14,9 +17,15 @@ export function HeaderView({ handleSearch, setSearch }: HeaderProps) {
       <form onSubmit={handleSearch} className="flex items-center gap-2 flex-1">
         <Input
           className="bg-white text-black"
-          onChange={(e) => setSearch(e.target.value)}
+          value={searchWord}
+          placeholder="O que você procura ?"
+          onChange={(e) => setSearchWord(e.target.value)}
         />
-        <Button size="icon" className="bg-secondary hover:bg-secondary/80">
+        <Button
+          size="icon"
+          disabled={searchWord.length === 0}
+          className="bg-secondary hover:bg-secondary/80"
+        >
           <Search className="text-primary" />
         </Button>
       </form>
