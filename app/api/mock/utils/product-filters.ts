@@ -1,6 +1,8 @@
 import { products } from '../products';
 
 export function filterProductByCategory(category: string) {
+  if (category === 'todos') return products;
+  if (category === 'ofertas') return filterProductsOffers();
   return products.filter((product) => product.category === category);
 }
 
