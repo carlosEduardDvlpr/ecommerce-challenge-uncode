@@ -9,7 +9,7 @@ export function useHeaderModel() {
 
   const handleSearch = (e: FormEvent) => {
     e.preventDefault();
-    router.push(`/products?name=${search}`);
+    router.push(`/search/${search}`);
   };
 
   return {
