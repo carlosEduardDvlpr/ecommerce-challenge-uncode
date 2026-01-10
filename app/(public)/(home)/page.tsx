@@ -1,11 +1,11 @@
 import Banner from './_components/banner';
-import OfferProductsViewModel from './_components/offers';
+import GridProducts from './_components/grid-products';
 
 export default async function HomePage() {
   return (
     <main>
       <Banner />
-      <OfferProductsViewModel />
+      <GridProducts />
     </main>
   );
 }
