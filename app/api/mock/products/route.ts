@@ -6,7 +6,11 @@ import {
   filterProductByName,
 } from '../utils/product-filters';
 
+const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
 export async function GET(req: NextRequest) {
+  await delay(100);
+
   const searchParams = req.nextUrl.searchParams;
 
   const id = searchParams.get('id');
