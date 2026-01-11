@@ -107,7 +107,7 @@ export function CartSheetView({
             <p className="text-lg text-center text-white font-medium">
               Total do carrinho: {formatNumberBrl(cartTotal)}{' '}
             </p>
-            <Button className="text-lg bg-secondary text-primary hover:bg-secondary/80">
+            <Button disabled className="text-lg bg-secondary text-primary hover:bg-secondary/80">
               Finalizar compra
             </Button>
           </div>
