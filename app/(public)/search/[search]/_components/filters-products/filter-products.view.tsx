@@ -9,10 +9,10 @@ import {
   SelectItem,
   SelectValue,
 } from '@/components/ui/select';
-import { useFilterContext } from '@/context/filters-context/filters-context';
+import { useFilterContext } from '@/context/filters-context/useFilters';
 
 export function FilterProductsView() {
-  const { setCategory, category, setPrice, price } = useFilterContext();
+  const { setCategory, setPrice, price } = useFilterContext();
   const categorias = [
     'todos',
     'ofertas',
@@ -22,10 +22,10 @@ export function FilterProductsView() {
   ] as const;
 
   return (
-    <div className="w-60 border-r-2 border-primary pr-4">
-      <p className="text-gray-600">Filtros</p>
+    <div className="md:w-60 w-full border-b-2 md:border-b-0 md:border-r-2 border-primary md:pr-4 flex md:gap-0 gap-2 md:block md:mb-0 mb-4">
+      <p className="text-gray-600 md:block hidden">Filtros</p>
 
-      <div className="border-t border-gray-600 my-2 py-2">
+      <div className="md:border-t border-gray-600 my-2 py-2">
         <p className="mb-2 text-primary font-medium">Valor</p>
         <div className="flex gap-4 items-center">
           <p>Até: </p>
@@ -40,7 +40,7 @@ export function FilterProductsView() {
         </div>
       </div>
 
-      <div className="border-t border-gray-600 my-2 py-2">
+      <div className="md:border-t border-gray-600 my-2 py-2">
         <p className="mb-2 text-primary font-medium">Categoria</p>
 
         <Select

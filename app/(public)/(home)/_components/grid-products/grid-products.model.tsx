@@ -1,5 +1,6 @@
 'use client';
-import { Product } from '@/app/api/mock/products';
+import { type Product } from '@/app/api/mock/products';
+import { URL } from '@/constants/url';
 import { useEffect, useState } from 'react';
 
 export function useGridProductsModel() {
@@ -22,9 +23,7 @@ export function useGridProductsModel() {
       setLoading(true);
       setProducts([]);
 
-      const response = await fetch(
-        'http://localhost:3000/api/mock/products?category=' + selectedCategory,
-      );
+      const response = await fetch(`${URL}?category=${selectedCategory}`);
       const products = (await response.json()) as Product[];
       setProducts(products);
     } catch (error) {

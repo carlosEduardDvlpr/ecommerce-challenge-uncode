@@ -1,4 +1,4 @@
-import { Product } from '@/app/api/mock/products';
+import { type Product } from '@/app/api/mock/products';
 
 export interface GridProductsProps {
   products: Product[];
