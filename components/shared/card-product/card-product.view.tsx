@@ -66,7 +66,7 @@ export function CardProductView({
 
         <Link href={`/product/${product.id}`}>
           <Button className="w-full bg-primary border-2 border-primary hover:bg-orange-700">
-            Comprar
+            Ver mais
           </Button>
         </Link>
       </CardContent>
