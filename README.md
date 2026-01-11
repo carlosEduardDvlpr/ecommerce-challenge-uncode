@@ -76,7 +76,7 @@ Padronização dos paddings com um estilo customizado no arquivo globals.css ".p
 Para executar local, utilize:
 
 ```
-git clone https://github.com/carlosEduardDvlpr/ecommerce-challenge-uncode.git"
+git clone https://github.com/carlosEduardDvlpr/ecommerce-challenge-uncode.git
 npm install
 npm run dev
 ```
