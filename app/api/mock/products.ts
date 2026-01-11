@@ -176,4 +176,6 @@ export interface Product {
   shortDescription: string;
   fullDescription: string;
   stock: number;
+  quantity?: number;
+  totalPrice?: number;
 }
