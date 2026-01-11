@@ -1,0 +1,1 @@
+export const URL = '/api/mock/products';
