@@ -10,6 +10,7 @@ export default async function SearchProductPage({
   params: Promise<{ search: string }>;
 }) {
   const { search } = await params;
+  const decodedSearch = decodeURIComponent(search);
 
   const baseUrl = await getBaseUrl();
 
@@ -19,14 +20,14 @@ export default async function SearchProductPage({
   if (products.length === 0)
     return (
       <section className="p-pattern py-8">
-        <p>Nenhum produto encontrado para "{search}"</p>
+        <p>Nenhum produto encontrado para "{decodedSearch}"</p>
       </section>
     );
 
   return (
     <section className="p-pattern py-4 md:py-8">
       <p className="md:pb-8 pb-2 text-gray-600">
-        Exibindo resultados para "{search}"
+        Exibindo resultados para "{decodedSearch}"
       </p>
 
       <div className="md:flex gap-8">
