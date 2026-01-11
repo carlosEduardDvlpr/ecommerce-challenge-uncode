@@ -33,7 +33,7 @@ export default async function ProductPage({
 
   return (
     <section className="p-pattern py-8">
-      <div className="p-pattern md:py-8 grid md:gap-24 gap-12 lg:grid-cols-2">
+      <div className="md:py-8 grid md:gap-24 gap-12 lg:grid-cols-2">
         <CarouselProductView product={product} />
 
         <div className="flex flex-col gap-4">

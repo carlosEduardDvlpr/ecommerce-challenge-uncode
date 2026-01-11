@@ -12,7 +12,7 @@ import Image from 'next/image';
 export function CarouselProductView({ product }: { product: Product }) {
   return (
     <div className="flex justify-center">
-      <Carousel className="w-[80%]">
+      <Carousel className="md:max-w-150 max-w-70 w-full">
         <CarouselContent>
           {Array.from({ length: 5 }).map((_, index) => (
             <CarouselItem key={index}>
