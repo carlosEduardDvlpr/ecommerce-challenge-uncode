@@ -1,7 +1,7 @@
 # UNCommerce - desafio técnico Uncode
 
 Objetivo: construir um miniecommerce com home, detalhes dos produtos e carrinho
-> O projeto se encontra online na URL: <LINK>
+> [clique aqui](https://ecommerce-challenge-uncode.vercel.app/) para acessar o projeto online
 
 ## Stack
 
