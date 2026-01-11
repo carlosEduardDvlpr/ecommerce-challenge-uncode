@@ -9,6 +9,8 @@ export function useHeaderModel() {
 
   const handleSearch = (e: FormEvent) => {
     e.preventDefault();
+    (document.activeElement as HTMLElement)?.blur();
+
     router.push(`/search/${searchWord}`);
   };
 
