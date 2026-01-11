@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { FormEvent, useState } from 'react';
+import { useState, type FormEvent } from 'react';
 
 export function useHeaderModel() {
   const [searchWord, setSearchWord] = useState('');

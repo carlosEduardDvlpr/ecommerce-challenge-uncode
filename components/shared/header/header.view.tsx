@@ -1,7 +1,10 @@
+"use client"
+import { HeaderProps } from './header.type';
+import CartSheet from '../cart-sheet';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Heart, Search, ShoppingCart, User } from 'lucide-react';
-import { HeaderProps } from './header.type';
+import { Search } from 'lucide-react';
+import Link from 'next/link';
 
 export function HeaderView({
   handleSearch,
@@ -9,45 +12,56 @@ export function HeaderView({
   searchWord,
 }: HeaderProps) {
   return (
-    <header className="p-pattern flex gap-12 bg-primary text-white h-17.5 w-full justify-between items-center">
-      {/* Logo */}
-      <h1 className="text-xl italic font-medium">UNCommerce</h1>
+    <>
+      <header className="p-pattern flex gap-12 bg-primary text-white md:h-17.5 h-14 w-full justify-between items-center">
+        <Link href="/">
+          <h1 className="text-xl italic font-medium">UNCommerce</h1>
+        </Link>
 
-      {/* Busca */}
-      <form onSubmit={handleSearch} className="flex items-center gap-2 flex-1">
-        <Input
-          className="bg-white text-black"
-          value={searchWord}
-          placeholder="O que você procura ?"
-          onChange={(e) => setSearchWord(e.target.value)}
-        />
-        <Button
-          size="icon"
-          disabled={searchWord.length === 0}
-          className="bg-secondary hover:bg-secondary/80"
+        <form
+          onSubmit={handleSearch}
+          className="items-center gap-2 flex-1 max-w-225 hidden md:flex"
         >
-          <Search className="text-primary" />
-        </Button>
-      </form>
+          <Input
+            className="bg-white text-black"
+            value={searchWord}
+            placeholder="O que você procura ?"
+            onChange={(e) => setSearchWord(e.target.value)}
+          />
+          <Button
+            size="icon"
+            disabled={searchWord.length === 0}
+            className="bg-secondary hover:bg-secondary/80"
+          >
+            <Search className="text-primary" />
+          </Button>
+        </form>
 
-      {/* Favoritos */}
-      <div className="flex items-center gap-8">
-        <div className="flex items-center gap-2">
-          <Heart />
-          <p>Favoritos</p>
+        <div className="flex items-center gap-8">
+          <CartSheet />
         </div>
+      </header>
 
-        {/* Entrar */}
-        <div className="flex items-center gap-2">
-          <User />
-          <p>Entrar</p>
-        </div>
-
-        {/* Carrinho */}
-        <div>
-          <ShoppingCart />
-        </div>
+      <div className="py-2 p-pattern md:hidden block">
+        <form
+          onSubmit={handleSearch}
+          className="items-center gap-2 flex-1 max-w-225 flex"
+        >
+          <Input
+            className="bg-white text-black"
+            value={searchWord}
+            placeholder="O que você procura ?"
+            onChange={(e) => setSearchWord(e.target.value)}
+          />
+          <Button
+            size="icon"
+            disabled={searchWord.length === 0}
+            className="md:bg-secondary hover:bg-secondary/80"
+          >
+            <Search className="md:text-primary" />
+          </Button>
+        </form>
       </div>
-    </header>
+    </>
   );
 }
