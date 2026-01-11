@@ -3,14 +3,23 @@
 Objetivo: construir um miniecommerce com home, detalhes dos produtos e carrinho
 > [clique aqui](https://ecommerce-challenge-uncode.vercel.app/) para acessar o projeto online
 
-## Stack
+### Setup
+Para executar local, utilize:
+
+```
+git clone https://github.com/carlosEduardDvlpr/ecommerce-challenge-uncode.git
+npm install
+npm run dev
+```
+
+### Stack
 
 - Next.js com Typescript <br />
 - TailwindCSS
 
 \*\* Decidi me utilizar da lib ShadcnUI como base para construção da interfaces e components, para mais velocidade no desenvolvimento
 
-## Arquitetura
+### Arquitetura
 Padrão Next.js AppRouter, com components locais em subspastas renomeadas com _ na propria pasta da page:</br>
 
 ```
@@ -35,11 +44,30 @@ header/
 ------ 'index.ts' > export default do component viewModel
 ```
 
-## Decisão de Design
+### Decisão de Design
 
 CORES -> Tema Laranja para combinar com a cor da Uncode <br/>
 NOME -> trocadilho de "Uncode com E-commerce": UNCommerce :) <br />
 Padronização dos paddings com um estilo customizado no arquivo globals.css ".p-pattern"
+Nicho: produtos tecnológicos, lista para pesquisa:
+
+Categoria Compotadures
+- Notebook casual
+- MacBook
+- PC Gamer
+- All-in-One
+
+Categoria Periféricos
+- Teclado Mecânico RGB
+- Mouse Gamer
+- Headset Gamer
+- Monitor Full HD 24'
+
+Categoria Acessórios
+- SSD 1TB
+- HD Externo 2TB
+- Hub USB-C 6 em 1
+- Base para Notebook
 
 ### Rotas e suas principais funcionalidas:
 
@@ -71,12 +99,3 @@ Padronização dos paddings com um estilo customizado no arquivo globals.css ".p
 ### Action
 
 - getBaseUrl() -> Para montar a url base no servidor (rota SEARCH e PRODUCT)
-
-### Setup
-Para executar local, utilize:
-
-```
-git clone https://github.com/carlosEduardDvlpr/ecommerce-challenge-uncode.git
-npm install
-npm run dev
-```
