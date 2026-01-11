@@ -1,11 +1,12 @@
 import { Product } from '@/app/api/mock/products';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import ButtonAddCart from './_components/button-add-cart';
 import { formatNumberBrl } from '@/utils/format-number-brl';
-import { Plus } from 'lucide-react';
 import { CarouselProductView } from './_components/carousel-product/carousel-product.view';
-import { CardProductView } from '@/components/shared/card-product/card-product.view';
+import CardProduct from '@/components/shared/card-product';
 import { Separator } from '@/components/ui/separator';
+import { URL } from '@/constants/url';
+import { getBaseUrl } from '@/actions/get-base-url';
 
 export default async function ProductPage({
   params,
@@ -13,14 +14,13 @@ export default async function ProductPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
+  const baseUrl = await getBaseUrl()
 
-  const responseProduct = await fetch(
-    `http://localhost:3000/api/mock/products?id=${id}`,
-  );
+  const responseProduct = await fetch(`${baseUrl}${URL}?id=${id}`);
   const product = (await responseProduct.json()) as Product;
 
   const responseCategory = await fetch(
-    `http://localhost:3000/api/mock/products?category=${product.category}`,
+    `${baseUrl}${URL}?category=${product.category}`,
   );
   const productsCategory = (await responseCategory.json()) as Product[];
 
@@ -33,25 +33,25 @@ export default async function ProductPage({
 
   return (
     <section className="p-pattern py-8">
-      <div className="p-pattern py-8 grid gap-24 grid-cols-2">
+      <div className="p-pattern md:py-8 grid md:gap-24 gap-12 lg:grid-cols-2">
         <CarouselProductView product={product} />
 
         <div className="flex flex-col gap-4">
           <div>
-            <div className="flex gap-4 items-center">
-              <h1 className="text-4xl font-medium text-primary">
+            <div className="md:flex flex flex-col-reverse md:gap-4 gap-2">
+              <h1 className="md:text-4xl text-3xl font-medium text-primary">
                 {product.name}
               </h1>
               <Badge>{product.category}</Badge>
             </div>
 
-            <p className="text-lg font-medium mt-1">
+            <p className="text-base font-medium mt-1">
               {product.shortDescription}
             </p>
           </div>
 
           <div className="py-2">
-            <p className="text-lg">{product.fullDescription}</p>
+            <p className="md:text-lg text-base">{product.fullDescription}</p>
           </div>
 
           <div>
@@ -77,14 +77,12 @@ export default async function ProductPage({
                 : `Quantidade em estoque: ${product.stock}`}
             </p>
 
-            <Button className="w-1/2 text-lg" size="lg">
-              Adicionar ao carrinho <Plus />
-            </Button>
+            <ButtonAddCart product={product} />
           </div>
         </div>
       </div>
 
-      <Separator />
+      <Separator className="mt-8 md:mt-0" />
 
       <div className="flex flex-col gap-4 mt-4">
         <h2 className="text-2xl text-primary font-medium">
@@ -95,7 +93,7 @@ export default async function ProductPage({
           {productsCategory
             .filter((p) => p.id !== product.id)
             .map((product) => (
-              <CardProductView key={product.id} product={product} />
+              <CardProduct key={product.id} product={product} />
             ))}
         </div>
       </div>
