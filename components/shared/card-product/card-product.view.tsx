@@ -1,27 +1,38 @@
-import { Product } from '@/app/api/mock/products';
+'use client';
+
+import { formatNumberBrl } from '@/utils/format-number-brl';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { formatNumberBrl } from '@/utils/format-number-brl';
-import { HeartIcon, ShoppingCartIcon } from 'lucide-react';
+import { ShoppingCartIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { type CardProductProps } from './card-product.type';
 
-export function CardProductView({ product }: { product: Product }) {
+export function CardProductView({
+  product,
+  existingProductInCart,
+  handleAddToCart,
+}: CardProductProps) {
   return (
-    <Card key={product.id} className="overflow-hidden relative p-0">
+    <Card className="overflow-hidden relative p-0">
       <CardContent className="p-2">
         {product.offer && (
           <Badge className="absolute top-4 left-4">Oferta</Badge>
         )}
 
         <div className="absolute top-2 right-2">
-          <Button className="bg-transparent hover:bg-transparent" size="icon">
-            <HeartIcon className="text-primary" />
-          </Button>
-
-          <Button className="bg-transparent hover:bg-transparent" size="icon">
-            <ShoppingCartIcon className="text-primary" />
+          <Button
+            className="bg-transparent hover:bg-transparent"
+            size="icon"
+            disabled={existingProductInCart}
+            onClick={handleAddToCart}
+          >
+            <ShoppingCartIcon
+              className={`text-primary ${
+                existingProductInCart ? 'fill-primary' : 'fill-none'
+              }`}
+            />
           </Button>
         </div>
 
@@ -30,6 +41,7 @@ export function CardProductView({ product }: { product: Product }) {
           alt={product.name}
           width={250}
           height={200}
+          className='w-auto h-auto'
           unoptimized
         />
 
