@@ -119,7 +119,7 @@ export const products = [
     offer: false,
     category: 'acessorios',
     image: 'https://placehold.co/600x600',
-    shortDescription: 'Aramzenamento SSD rápido',
+    shortDescription: 'Armazenamento SSD rápido',
     fullDescription:
       'SSD de 1TB com altas velocidades de leitura e gravação, ideal para melhorar o desempenho de notebooks e desktops.',
     stock: 30,
