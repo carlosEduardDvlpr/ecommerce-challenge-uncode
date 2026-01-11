@@ -1,6 +1,8 @@
 import { Product } from '@/app/api/mock/products';
 import { FilterProductsView } from './_components/filters-products/filter-products.view';
 import { GridProducts } from './_components/grid-products/grid-products';
+import { URL } from '@/constants/url';
+import { getBaseUrl } from '@/actions/get-base-url';
 
 export default async function SearchProductPage({
   params,
@@ -9,9 +11,9 @@ export default async function SearchProductPage({
 }) {
   const { search } = await params;
 
-  const response = await fetch(
-    `http://localhost:3000/api/mock/products?name=${search}`,
-  );
+  const baseUrl = await getBaseUrl();
+
+  const response = await fetch(`${baseUrl}${URL}?name=${search}`);
   const products = (await response.json()) as Product[];
 
   if (products.length === 0)
@@ -22,13 +24,14 @@ export default async function SearchProductPage({
     );
 
   return (
-    <section className="p-pattern py-8">
-      <p className="pb-8 text-gray-600">Exibindo resultados para "{search}"</p>
+    <section className="p-pattern py-4 md:py-8">
+      <p className="md:pb-8 pb-2 text-gray-600">
+        Exibindo resultados para "{search}"
+      </p>
 
-      <div className="flex gap-8">
+      <div className="md:flex gap-8">
         <FilterProductsView />
-
-       <GridProducts products={products} />
+        <GridProducts products={products} />
       </div>
     </section>
   );

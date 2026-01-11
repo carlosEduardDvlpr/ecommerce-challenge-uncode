@@ -123,6 +123,6 @@
     @apply bg-background text-foreground;
   }
   .p-pattern {
-    @apply px-12;
+    @apply sm:px-12 px-4;
   }
 }
